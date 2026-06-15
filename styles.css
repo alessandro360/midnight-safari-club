@@ -2198,3 +2198,31 @@ footer {
   background: rgba(201,168,76,0.1);
   color: var(--gold-light);
 }
+
+/* ═══════════════════════════════
+   V39 — REMOVE ITALIC FROM BODY TEXT
+═══════════════════════════════ */
+
+/* Remove italic from all body paragraphs */
+.about-section-content p,
+.experience-desc,
+.philosophy-desc,
+.brand-intro-text p,
+.cocktail-card-caption .cocktail-card-desc,
+.home-single-desc-below,
+.modal-text,
+.modal-ingredients li,
+.page-portfolio-note p {
+  font-style: normal;
+}
+
+/* Keep italic only on lead lines and taglines */
+.about-section-content .lead,
+.brand-intro-text .lead,
+.hero-tagline,
+.modal-desc,
+.modal-pairing,
+.collection-subtitle,
+.page-hero p {
+  font-style: italic;
+}
