@@ -309,6 +309,10 @@ nav {
   margin-top: 80px; /* height of nav bar */
 }
 
+.hero-overlay-text {
+  display: none;
+}
+
 .hero-image img {
   width: 100%;
   height: auto;
@@ -373,26 +377,87 @@ nav {
 
 .hero-scroll-hidden {
   display: none;
-  bottom: 2.5rem;
-  right: 5rem;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--gold-dim);
 }
 
-.hero-scroll::after {
-  content: '';
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, var(--gold-dim), transparent);
-  animation: scrollLine 2s ease-in-out infinite;
+/* ═══════════════════════════════
+   DESKTOP / TABLET LANDSCAPE
+   Hero title overlays bottom third of image
+═══════════════════════════════ */
+@media (min-width: 769px) {
+  .hero-image {
+    position: relative;
+    margin-top: 80px;
+  }
+
+  .hero-image img {
+    max-height: none;
+    height: 100vh;
+    min-height: 600px;
+  }
+
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 75%;
+    background: linear-gradient(to top, rgba(7,6,4,0.85) 0%, rgba(7,6,4,0.6) 30%, rgba(7,6,4,0.25) 60%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-overlay-text {
+    display: block;
+    position: absolute;
+    left: 0; right: 0;
+    top: 42%;
+    z-index: 2;
+    padding: 0 5rem;
+    text-align: center;
+  }
+
+  .hero-overlay-text .hero-title {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+  }
+
+  .hero-overlay-text .hero-eyebrow,
+  .hero-overlay-text .hero-title,
+  .hero-overlay-text .hero-tagline {
+    margin-bottom: 1rem;
+  }
+
+  .hero-overlay-text .hero-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-overlay-text .hero-tagline {
+    margin-bottom: 0;
+  }
+
+  /* Hide the old stacked content block on desktop/tablet landscape, buttons move below */
+  .hero-content {
+    text-align: center;
+    padding: 3rem 5rem 5rem;
+  }
+
+  .hero-content .hero-eyebrow,
+  .hero-content .hero-title,
+  .hero-content .hero-tagline {
+    display: none;
+  }
+
+  .hero-content .hero-buttons {
+    margin: 0 auto;
+  }
+}
+
+/* LONDON eyebrow slightly larger on true desktop only */
+@media (min-width: 1024px) {
+  .hero-overlay-text .hero-eyebrow {
+    font-size: 0.85rem;
+  }
+}
+
+.hero-scroll {
+  display: none;
 }
 
 /* Brand intro */
